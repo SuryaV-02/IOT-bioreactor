@@ -10,7 +10,7 @@ def CheckInputConfirmation(inputtext,window):
 
 def play_sound():
     pygame.mixer.music.load('sound.mp3')
-    pygame.mixer.music.play(loops=0)
+    pygame.mixer.music.play(loops=10)
 
 def increase_play_sound_on_cancel(toplevel):
     pygame.mixer.music.set_volume(0.8)
@@ -29,16 +29,16 @@ def clickAbout(window):
     lbl1 = Label(toplevel, text="Confirm", bg="#FF9F45", fg="white", font="none 25 bold")
     lbl1.config(anchor=CENTER)
     lbl1.pack()
-    lbl1 = Label(toplevel, text="Please type in I understand the consequences in the input box", bg="#FF9F45", fg="white", font="none 11 bold")
+    lbl1 = Label(toplevel, text="Please type in 'I understand the consequences' in the input box", bg="#FF9F45", fg="white", font="none 11 bold")
     lbl1.config(anchor=CENTER)
     lbl1.pack()
-    inputtxt = Text(toplevel,height = 1,width = 30, pady=5)
+    inputtxt = Text(toplevel,height = 1,width = 30, pady=5, wrap='none')
     inputtxt.pack(ipadx = 1,ipady = 1, expand=True)
     b2 = Button(toplevel, text = "CONFIRM", command= lambda : CheckInputConfirmation(inputtxt,window),width=20,foreground='white', background='#F76E11',activeforeground='white' ,activebackground='#F76E11',relief = FLAT)
     b2.pack(expand = True, ipady = 10)
 
 
-def main():
+def main(temperature_reading,humidity_reading=0):
     window = Tk()
     window.title("StudioX")
     window.geometry("700x450")
@@ -57,8 +57,8 @@ def main():
     lbl2.config(anchor=CENTER)
     lbl2.pack()
 
-    last_temp = 10
-    lbl3 = Label(window, text='Last Temperature Reading : ' + str(last_temp), bg='#FF9F45', fg='white',font="none 10 bold")
+    last_temp = str(temperature_reading) + "°C"
+    lbl3 = Label(window, text='Last Temperature Reading : ' + last_temp, bg='#FF9F45', fg='white',font="none 10 bold")
     lbl3.config(anchor=CENTER)
     lbl3.pack()
 
