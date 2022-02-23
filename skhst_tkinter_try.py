@@ -1,7 +1,7 @@
 from tkinter import *
 import pygame
 
-def CheckInputConfirmation(inputtext):
+def CheckInputConfirmation(inputtext,window):
     _value = inputtext.get("1.0",'end-1c')
     _match = 'I understand the consequences'
     # print(_value, _value==_match)
@@ -15,9 +15,11 @@ def play_sound():
 def increase_play_sound_on_cancel(toplevel):
     pygame.mixer.music.set_volume(0.8)
     toplevel.destroy()
-    
 
-def clickAbout():
+def disable_close_button():
+    pass 
+
+def clickAbout(window):
     pygame.mixer.music.set_volume(0.3)
     toplevel = Toplevel()
     toplevel.protocol("WM_DELETE_WINDOW", lambda:increase_play_sound_on_cancel(toplevel))
@@ -32,8 +34,9 @@ def clickAbout():
     lbl1.pack()
     inputtxt = Text(toplevel,height = 1,width = 30, pady=5)
     inputtxt.pack(ipadx = 1,ipady = 1, expand=True)
-    b2 = Button(toplevel, text = "CONFIRM", command= lambda : CheckInputConfirmation(inputtxt),width=20,foreground='white', background='#F76E11',activeforeground='white' ,activebackground='#F76E11',relief = FLAT)
+    b2 = Button(toplevel, text = "CONFIRM", command= lambda : CheckInputConfirmation(inputtxt,window),width=20,foreground='white', background='#F76E11',activeforeground='white' ,activebackground='#F76E11',relief = FLAT)
     b2.pack(expand = True, ipady = 10)
+
 
 def main():
     window = Tk()
@@ -59,10 +62,9 @@ def main():
     lbl3.config(anchor=CENTER)
     lbl3.pack()
 
-    b2 = Button(window, text = "Supress Alert", command=clickAbout,width=20, font="none 15",
+    b2 = Button(window, text = "Supress Alert", command=lambda : clickAbout(window),width=20, font="none 15",
     foreground='white', background='#F76E11',activeforeground='white' ,activebackground='#F76E11',relief = FLAT)
     b2.pack(expand = True, ipady = 10, )
+    window.protocol("WM_DELETE_WINDOW", disable_close_button)
     
     window.mainloop()
-
-main()
