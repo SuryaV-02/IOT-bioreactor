@@ -1,0 +1,32 @@
+body{
+    /* background-color: #0A100C; */
+    animation: effect 1s linear infinite;
+}
+
+@keyframes effect {
+    0%{background-image: linear-gradient(to right, red , #4776E6 );}
+    /* 25%{background-image: linear-gradient(to top, red  51%, #4776E6  100%);} */
+    50%{background-image: linear-gradient(to left, red  , #4776E6  );}
+    /* 25%{background-image: linear-gradient(to bottom, red  51%, #4776E6  100%);} */
+    100%{background-image:linear-gradient(to right,red  , #4776E6  );}
+}
+
+/* .btn-grad {background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; 
+   color: #fff;
+   text-decoration: none;
+ } */
